@@ -34,11 +34,12 @@ void signupORlogin(void){
     scanf(" %s", user.password);
 
     if(userLogin(user.username, user.password)){
-        printf("OLA!! Login success!!");
-        sleep(1);
+        system("cls");
+
+        printf("\n\n\n\n\t\t\t\tYou have successfully logged into this application\n\t\t\t\tWait while we redirect you to the next page!");
+        sleep(2);
         system("cls");
         banner();
-        sleep(1);
     }
 
     }
@@ -51,6 +52,13 @@ void signupORlogin(void){
     scanf(" %s", user.password);
 
     signup(user.username, user.password);
+
+    system("cls");
+    printf("\n\n\n\n\t\t\t\tYou have successfully signed up for this application\n\t\t\t\tWait while we redirect you to the next page!");
+    sleep(2);
+    system("cls");
+    banner();
+    signupORlogin();
 
     }
     else printf("Invalid choice");
@@ -65,7 +73,7 @@ void signup(char *username, char *password){
 
     FILE *ptr;
 
-    ptr = fopen("datafile.txt", "a");
+    ptr = fopen("datafile.txt", "w");
 
     fprintf( ptr, "%s\n%s\n%s", username, password);
     fclose(ptr);
@@ -95,4 +103,3 @@ int userLogin(char *username, char *password){
     else tof = 0;
     return tof;
 }
-
