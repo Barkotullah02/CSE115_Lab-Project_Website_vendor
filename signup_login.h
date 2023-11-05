@@ -4,10 +4,12 @@
 #include <dos.h>
 
 int userLogin(char *username, char *password);
-void dataMatch(char *username, char *password );
 void signup(char *username, char *password);
 void signupORlogin(void);
 
+/*
+Data structure for using the same type variables frequently
+*/
 typedef struct{
     char username[30];
     char password[30];
@@ -20,9 +22,11 @@ void signupORlogin(void){
 
     int decide;
 
+    do{
     printf("If you already have an account please go for login\n");
     printf("\t1. Login\n");
     printf("\t2. Signup\n");
+    printf("\t3. Exit\n");
     printf("\tChoose: ");
     scanf(" %d", &decide);
 
@@ -40,6 +44,7 @@ void signupORlogin(void){
         sleep(2);
         system("cls");
         banner();
+        VendingAlgorithm();
     }
 
     }
@@ -61,11 +66,18 @@ void signupORlogin(void){
     signupORlogin();
 
     }
+    else if( decide == 3 ){
+        printf("You exit from the application");
+    }
     else printf("Invalid choice");
+    }
+    while( decide != 3 );
     return 0;
 }
 
-
+/*
+This function will take username and password from the user and store it into a file
+*/
 void signup(char *username, char *password){
 
 
@@ -81,9 +93,10 @@ void signup(char *username, char *password){
     return 0;
 }
 
-void dataMatch(char *username, char *password ){
-}
-
+/*
+This function compares two string the users input
+And the existing one used while signing up
+*/
 int userLogin(char *username, char *password){
     login userLogin;
 
@@ -95,11 +108,14 @@ int userLogin(char *username, char *password){
 
     fscanf(ptr, "%s\n%s\n", userLogin.username, userLogin.password);
 
+    /*
+    Function strcmp(); compares two strings and returns if they are the same or not
+    */
     if(strcmp(userLogin.username, username) == 0 && strcmp(userLogin.password, password) == 0){
             tof = 1;
-
     }
 
     else tof = 0;
     return tof;
 }
+
