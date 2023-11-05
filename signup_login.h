@@ -15,7 +15,9 @@ typedef struct{
     char password[30];
 }login;
 
-
+/*
+This function drives the user if he wants sign up or login or wants to exit
+*/
 void signupORlogin(void){
 
     login user;
